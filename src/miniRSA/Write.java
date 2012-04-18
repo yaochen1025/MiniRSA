@@ -1,19 +1,18 @@
 package miniRSA;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.*;
-/**
- * 
- * @author Yao Chen
- * @author Sheng Huang
- *
- */
-public class Server {
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+
+import java.net.Socket;
+
+public class Write {
+	
 
 	private static int port;
 	private static String ipAddress;
-	private ServerSocket serverSocket;
 
 	public static void main(String[] args) {
 		if (args.length < 2) {
@@ -28,27 +27,28 @@ public class Server {
 			System.exit(-1);
 		}
 		ipAddress = args[1].trim();
-		new Server().run();
+		new Write().run();
 	}
 
 	public void run() {
 		try {
-			serverSocket = new ServerSocket(port);
-
-			while (true) {
-				Socket socket = serverSocket.accept();
-				InputStreamReader reader = new InputStreamReader(socket.getInputStream());
-				BufferedReader br = new BufferedReader(reader);
-				String line = br.readLine();
-				System.out.println(line);
-			}
-
+			
+			System.out.println(ipAddress + ":" + port);
+			Socket socket = new Socket();
+			socket.connect(new InetSocketAddress(ipAddress, port));
+			OutputStream out = socket.getOutputStream();
+			BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+	
+			String line = stdIn.readLine();
+			System.out.println("write " + line);
+			out.write(line.getBytes());
+			out.flush();
+			
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
 
 
 	}
-
 
 }
