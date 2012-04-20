@@ -3,8 +3,9 @@ package modular;
 import java.io.*;
 import java.net.*;
 
-import Message.MessageReceiver;
-import Message.MessageSender;
+import message.MessageReceiver;
+import message.MessageSender;
+
 
 public class Client {
 

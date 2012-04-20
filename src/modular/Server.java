@@ -1,8 +1,9 @@
 package modular;
 import java.net.*;
 
-import Message.MessageReceiver;
-import Message.MessageSender;
+import message.MessageReceiver;
+import message.MessageSender;
+
 /**
  * 
  * @author Yao Chen

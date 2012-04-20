@@ -1,4 +1,4 @@
-package Message;
+package message;
 
 import java.io.*;
 import java.io.IOException;
