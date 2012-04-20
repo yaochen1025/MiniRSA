@@ -77,7 +77,6 @@ public class RSA {
 		return i;
 	}
 
-
 	private static boolean isPrime(long n) {
 		
 		if (n <= 1) return false;

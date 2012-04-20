@@ -50,6 +50,6 @@ public class MessageReceiver extends Thread {
 			char x = this.decryptor.decrypt(receivedNumber);
 			sb.append(x);
 		}
-		System.out.println("other:\n" + sb.toString() + "\n\n");
+		System.out.println("-------------\nReceived from the other end:\n" + sb.toString() + "\n-------------\n");
 	}
 }

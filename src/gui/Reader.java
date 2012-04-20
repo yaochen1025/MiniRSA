@@ -41,6 +41,7 @@ public class Reader extends Thread {
 			char x = this.decryptor.decrypt(receivedNumber);
 			sb.append(x);
 		}
-		GUI.print(agentName + ":\n" + sb.toString() + "\n\n");
+		GUI.print(agentName + ":\n" + sb.toString() + "\n");
+		GUI.print("(Original Message: " + s + ")\n\n");
 	}
 }

@@ -37,8 +37,10 @@ public class MessageSender extends Thread {
 		
 		try {
 			while((line = userInput.readLine()) != null) {
+				System.out.println("-------------\nYou can say something:\n");
 				write(line);
 			}
+			System.out.println("-------------\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
