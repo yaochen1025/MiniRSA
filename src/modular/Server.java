@@ -1,8 +1,8 @@
-package miniRSA;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package modular;
 import java.net.*;
+
+import Message.MessageReceiver;
+import Message.MessageSender;
 /**
  * 
  * @author Yao Chen
@@ -12,11 +12,11 @@ import java.net.*;
 public class Server {
 
 	private static int port;
-	private static String ipAddress;
 	private ServerSocket serverSocket;
 
 	public static void main(String[] args) {
-		if (args.length < 2) {
+		
+		if (args.length < 1) {
 			System.out.println("missing arguments");
 			System.exit(-1);
 		}
@@ -27,27 +27,25 @@ public class Server {
 			System.out.println("error in port number");
 			System.exit(-1);
 		}
-		ipAddress = args[1].trim();
 		new Server().run();
 	}
 
 	public void run() {
+		
 		try {
+			
 			serverSocket = new ServerSocket(port);
+			Socket socket = serverSocket.accept();
+			
+			System.out.println("server:connected");
+						
+			new MessageReceiver(socket.getInputStream()).start();
+			new MessageSender(socket.getOutputStream()).start();
 
-			while (true) {
-				Socket socket = serverSocket.accept();
-				InputStreamReader reader = new InputStreamReader(socket.getInputStream());
-				BufferedReader br = new BufferedReader(reader);
-				String line = br.readLine();
-				System.out.println(line);
-			}
 
-		}catch (IOException e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 	}
 
 
