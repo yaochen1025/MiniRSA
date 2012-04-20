@@ -1,19 +1,17 @@
-package message;
-
-import gui.ServerGUI;
+package gui;
 
 import java.io.*;
 import java.math.BigInteger;
 
 import RSA.Encryptor;
 
-public class MessageReceiver extends Thread {
+public class ReceiverForGUI extends Thread {
 
 	BufferedReader in;
 	InputStream xin;
 	Encryptor decryptor;
 
-	public MessageReceiver(InputStream in){
+	public ReceiverForGUI(InputStream in){
 		this.xin = in;
 		this.in = new BufferedReader(new InputStreamReader(in));
 		this.decryptor = new Encryptor(new BigInteger("1531"),new BigInteger("2623"));
