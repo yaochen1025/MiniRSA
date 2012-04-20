@@ -6,7 +6,6 @@ import java.net.*;
 import message.MessageReceiver;
 import message.MessageSender;
 
-
 public class Client {
 
 

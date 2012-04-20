@@ -1,5 +1,7 @@
 package message;
 
+import gui.ChattingGUI;
+
 import java.io.*;
 import java.math.BigInteger;
 
@@ -43,15 +45,16 @@ public class MessageReceiver extends Thread {
 	}
 
 	private void print(String s) {
-		//String[] received = s.split("\\\\char");
-		//for (String temp : received) {
-//			BigInteger receivedNumber = new BigInteger(temp);
-//			char x = this.decryptor.decrypt(receivedNumber);
-//			System.out.print(x);
-		//}
-		
-		BigInteger receivedNumber = new BigInteger(s);
-		char x = this.decryptor.decrypt(receivedNumber);
-		System.out.print(x);
+		StringBuilder sb = new StringBuilder("");
+		String[] received = s.split("\\\\c");
+		for (String temp : received) {
+			BigInteger receivedNumber = new BigInteger(temp);
+			char x = this.decryptor.decrypt(receivedNumber);
+			sb.append(x);
+		}
+		ChattingGUI.print("s/he:\n"+sb.toString()+"\n\n");
+//		BigInteger receivedNumber = new BigInteger(s);
+//		char x = this.decryptor.decrypt(receivedNumber);
+//		System.out.print(x);
 	}
 }
