@@ -4,19 +4,20 @@ package message;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.net.*;
 
-import rsa.Encryptor;
+import rsa.*;
 
 
 public class MessageReceiver extends Thread {
 
 	BufferedReader in;
-	InputStream xin;
+	Socket socket;
 	Encryptor decryptor;
-
-	public MessageReceiver(InputStream in){
-		this.xin = in;
-		this.in = new BufferedReader(new InputStreamReader(in));
+	
+	
+	public MessageReceiver(Socket socket){
+		this.socket = socket;
 		this.decryptor = new Encryptor(new BigInteger("1531"),new BigInteger("2623"));
 	}
 
@@ -25,6 +26,12 @@ public class MessageReceiver extends Thread {
 	 */
 	@Override
 	public void run() {
+		try {
+			this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		String line;
 		try {
 			while ((line = in.readLine()) != null) {
@@ -43,6 +50,6 @@ public class MessageReceiver extends Thread {
 			char x = this.decryptor.decrypt(receivedNumber);
 			sb.append(x);
 		}
-		//GUI.print("s/he:\n"+sb.toString()+"\n\n");
+		System.out.println("other:\n" + sb.toString() + "\n\n");
 	}
 }

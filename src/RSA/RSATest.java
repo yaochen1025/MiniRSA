@@ -56,6 +56,15 @@ public class RSATest {
 			assertEquals(origin, result);
 		}
 	}
+	
+	@Test
+	public final void testTotient() {
+		debug("Totient");
+		assertEquals(RSA.totient(2),1);
+		assertEquals(RSA.totient(3),2);
+		assertEquals(RSA.totient(4),2);
+		assertEquals(RSA.totient(5),4);
+	}
 
 	void debug(String msg) {
 		if(debug) System.out.println(msg);

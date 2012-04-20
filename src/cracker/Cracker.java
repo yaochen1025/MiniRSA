@@ -1,6 +1,5 @@
 package cracker;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 import rsa.*;
 
@@ -43,15 +42,17 @@ public class Cracker {
 		if (this.c % 2 != 0) {
 			long end = (long) Math.sqrt(this.c) + 1;
 			for (i = 3; i < end; i = i + 2) {
-				if (c % i == 0) break;
+				if (c % i == 0) {
+					break;
+				}
 			}
-			isCracked = false;
+			if (i == end) isCracked = false;
 		}
 		this.a = i;
 		this.b = this.c / i;
 		this.m = (a - 1) * (b - 1);
 		this.d = RSA.modInverse(e, m);
-		this.totient = RSA.totient(c);
+		this.totient = RSA.totient(m);
 		
 		if(!isCracked) {
 			System.out.println("The c you entered is a prime number. " +

@@ -23,6 +23,7 @@ public class RSA {
 	}
 
 	public static long modInverse(long a, long n) {
+		//TODO
 		long i = n, v = 0, d = 1;
 		while (a > 0) {
 			long t = i/a, x = a;
@@ -37,6 +38,9 @@ public class RSA {
 		return v;
 	}
 	
+	public static BigInteger modInverse(BigInteger base, BigInteger n) {
+		return base.modInverse(n);
+	}
 
 	public static BigInteger modulo(BigInteger a, BigInteger b, BigInteger c) {
 		return a.modPow(b, c);
@@ -52,7 +56,7 @@ public class RSA {
 
 	public static long totient(long n){
 		long count = 0;
-		for (long i = 2; i < n; i++) {
+		for (long i = 1; i <= n; i++) {
 			if (GCD(n, i) == 1){ 
 				count++;
 			}

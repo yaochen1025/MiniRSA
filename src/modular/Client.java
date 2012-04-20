@@ -1,49 +1,49 @@
 package modular;
 
-import java.io.*;
 import java.net.*;
 
-import message.MessageReceiver;
-import message.MessageSender;
+import rsa.*;
+import message.*;
 
 public class Client {
 
-
 	private static int port;
 	private static String ipAddress;
+	private Socket socket;
+	public static RSASet myRSASet;
+	public static Encryptor encryptor;
 
 	public static void main(String[] args) {
-		
-		if (args.length < 2) {
-			System.out.println("missing arguments");
-			System.exit(-1);
-		}
 
-		try {
-			ipAddress = args[0];
-			port = Integer.parseInt(args[1].trim());
-		}catch (NumberFormatException e) {
-			System.out.println("error in port number");
-			System.exit(-1);
+		port = 8282;
+		ipAddress = "localhost";
+
+		if (args.length >= 2) {
+			try {
+				ipAddress = args[0];
+				port = Integer.parseInt(args[1].trim());
+			}catch (NumberFormatException e) {
+				System.out.println("error in port number");
+				System.exit(-1);
+			}
 		}
-		
 		new Client().run();
 	}
 
 	public void run() {
+
+		myRSASet = new RSASet();
 		try {
-			//TODO
-			Socket socket = new Socket(InetAddress.getLocalHost(), port);
-			System.out.println("client:connected");
-
-			new MessageSender(socket.getOutputStream()).start();
-			new MessageReceiver(socket.getInputStream()).start();
-
-		}catch (IOException e) {
-			e.printStackTrace();
+			socket = new Socket(ipAddress, port);
+		}catch (Exception e) {
+			System.out.println("The server is not available!");
+			System.exit(0);
 		}
-
+		System.out.println("connected to server!");
+		
+		
+		new MessageSender(socket).start();
+		new MessageReceiver(socket).start();
 
 	}
-
 }
