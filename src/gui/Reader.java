@@ -1,6 +1,4 @@
-package message;
-
-//import gui.ServerGUI;
+package gui;
 
 import java.io.*;
 import java.math.BigInteger;
@@ -8,15 +6,15 @@ import java.math.BigInteger;
 import rsa.Encryptor;
 
 
-public class MessageReceiver extends Thread {
+public class Reader extends Thread {
 
 	BufferedReader in;
-	InputStream xin;
 	Encryptor decryptor;
+	String agentName;
 
-	public MessageReceiver(InputStream in){
-		this.xin = in;
+	public Reader(InputStream in, String name){
 		this.in = new BufferedReader(new InputStreamReader(in));
+		this.agentName = name;
 		this.decryptor = new Encryptor(new BigInteger("1531"),new BigInteger("2623"));
 	}
 
@@ -43,6 +41,6 @@ public class MessageReceiver extends Thread {
 			char x = this.decryptor.decrypt(receivedNumber);
 			sb.append(x);
 		}
-		//GUI.print("s/he:\n"+sb.toString()+"\n\n");
+		GUI.print(agentName + ":\n" + sb.toString() + "\n\n");
 	}
 }

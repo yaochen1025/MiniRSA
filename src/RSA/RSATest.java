@@ -1,4 +1,4 @@
-package RSA;
+package rsa;
 
 import static org.junit.Assert.*;
 
@@ -28,21 +28,21 @@ public class RSATest {
 	@Test
 	public final void testCoprime() {
 		debug("Coprime");
-		for (int i = 0; i < 100; i++) {
-			int x = r.nextInt();
-			int y = RSA.coprime(x);
+		for (long i = 0; i < 100; i++) {
+			long x = r.nextInt();
+			long y = RSA.coprime(x);
 			assertEquals(RSA.GCD(x, y), 1);
 		}
 	}
 
-//	@Test
-//	public final void testmodInverseerse() {
-//		debug("Modular Inverse");
-//		assertEquals(RSA.modInverse(3,17),6);
-//		assertEquals(RSA.modInverse(55,123),85);
-//		assertEquals(RSA.modInverse(45,223),114);
-//		assertEquals(RSA.modInverse(2342,92830457),75588250);
-//	}
+	@Test
+	public final void testmodInverseerse() {
+		debug("Modular Inverse");
+		assertEquals(RSA.modInverse(3,17),6);
+		assertEquals(RSA.modInverse(55,123),85);
+		assertEquals(RSA.modInverse(45,223),114);
+		assertEquals(RSA.modInverse(2342,92830457),75588250);
+	}
 
 	@Test
 	public final void testEncrypt() {
@@ -51,7 +51,6 @@ public class RSATest {
 		for (int i = 0; i < 100; i++) {
 			char origin = (char) r.nextInt(256);
 			BigInteger intermediate = encryptor.encrypt(origin);
-			//BigInteger x = new BigInteger(intermediate.toByteArray().toString());
 			char result = decryptor.decrypt(intermediate);
 			debug(origin + " " + result);
 			assertEquals(origin, result);

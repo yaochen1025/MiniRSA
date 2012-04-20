@@ -3,6 +3,7 @@ import java.net.*;
 
 import message.MessageReceiver;
 //import message.MessageSender;
+import message.MessageSender;
 
 /**
  * 
@@ -16,21 +17,22 @@ public class Server {
 	private ServerSocket serverSocket;
 	private Socket socket;
 
-//	public static void main(String[] args) {
-//		
-//		if (args.length < 1) {
-//			System.out.println("missing arguments");
-//			System.exit(-1);
-//		}
-//
-//		try {
-//			port = Integer.parseInt(args[0].trim());
-//		}catch (NumberFormatException e) {
-//			System.out.println("error in port number");
-//			System.exit(-1);
-//		}
-//		new Server().run();
-//	}
+	public static void main(String[] args) {
+		
+		if (args.length < 1) {
+			System.out.println("missing arguments");
+			System.exit(-1);
+		}
+
+		int port = 8282;
+		try {
+			port = Integer.parseInt(args[0].trim());
+		}catch (NumberFormatException e) {
+			System.out.println("error in port number");
+			System.exit(-1);
+		}
+		new Server(port).run();
+	}
 	
 	
 	public Socket getSocket() {
@@ -48,7 +50,8 @@ public class Server {
 			serverSocket = new ServerSocket(port);
 			socket = serverSocket.accept();
 			
-			System.out.println("server:connected");
+			new MessageSender(socket.getOutputStream()).start();
+			new MessageReceiver(socket.getInputStream()).start();
 
 
 		}catch (Exception e) {
