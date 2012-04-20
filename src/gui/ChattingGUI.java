@@ -64,6 +64,13 @@ public class ChattingGUI extends JFrame {
 		//chattingArea.setPreferredSize(new Dimension(400, 575));
 	//	editingArea.setPreferredSize(new Dimension(400, 175));
 	//	sendButton.setPreferredSize(new Dimension(400, 50));
+		
+		this.add(sendButton, BorderLayout.CENTER);
+		this.add(chattingArea, BorderLayout.NORTH);
+		this.add(editingArea, BorderLayout.SOUTH);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.pack();
+		this.setVisible(true);
 		sendButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -72,12 +79,6 @@ public class ChattingGUI extends JFrame {
 			}
 
 		});
-		this.add(sendButton, BorderLayout.CENTER);
-		this.add(chattingArea, BorderLayout.NORTH);
-		this.add(editingArea, BorderLayout.SOUTH);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.pack();
-		this.setVisible(true);
 		this.setUpServer();
 
 	}
@@ -88,6 +89,7 @@ public class ChattingGUI extends JFrame {
 		socket = serverSocket.accept();
 		
 			this.msgReceiver = new MessageReceiver(socket.getInputStream());
+			this.msgReceiver.start();
 			//this.msgSender = new MessageSender(this.server.getSocket().getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -98,6 +100,7 @@ public class ChattingGUI extends JFrame {
 	public void send() {
 		String current = this.editingArea.getText();
 		this.editingArea.setText("");
+		//if ("".equals(current.trim())) return;
 		write(current);
 		print("me:\n" + current + "\n\n");
 
@@ -112,6 +115,7 @@ public class ChattingGUI extends JFrame {
 		OutputStream out;
 		try {
 			out = this.socket.getOutputStream();
+			//out.write((s+"\n").getBytes());
 			for (int i = 0; i < s.length(); i++) {
 				BigInteger x = this.encryptor.encrypt(s.charAt(i));
 				out.write((x+"\\c").getBytes());			

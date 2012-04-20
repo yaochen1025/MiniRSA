@@ -41,8 +41,8 @@ public class MessageSender extends Thread {
 	private void write(String s) throws IOException {
 		for (int i = 0; i < s.length(); i++) {
 			BigInteger x = this.encryptor.encrypt(s.charAt(i));
-			out.write((x+"\n").getBytes());	
-//			out.write((x+"\\char").getBytes());			
+			out.write((x+"\\c").getBytes());			
 		}
+		out.write(("\n").getBytes());	
 	}
 }

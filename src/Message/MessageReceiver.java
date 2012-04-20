@@ -52,6 +52,7 @@ public class MessageReceiver extends Thread {
 			char x = this.decryptor.decrypt(receivedNumber);
 			sb.append(x);
 		}
+//		System.out.println(s);
 		ChattingGUI.print("s/he:\n"+sb.toString()+"\n\n");
 //		BigInteger receivedNumber = new BigInteger(s);
 //		char x = this.decryptor.decrypt(receivedNumber);
