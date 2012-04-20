@@ -16,6 +16,13 @@ public class RSASet {
 	public RSASet(){
 		generate();
 	}
+	
+	public RSASet(long e, long d, long c, long m){
+		this.e = e;
+		this.d = d;
+		this.c = c;
+		this.m = m;
+	}
 
 	public void generate(){
 		try {

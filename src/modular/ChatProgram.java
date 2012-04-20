@@ -49,5 +49,25 @@ public abstract class ChatProgram {
 			e.printStackTrace();
 		}
 	}
+
+	void setUpShutDownHook() {
+		System.out.println("sdh setup");
+		Runtime.getRuntime().addShutdownHook(new Thread(){
+			@Override
+			public void run() {
+				try {
+					System.out.println("Done");
+//					if (socket != null) {
+//						socket.close();
+//					}
+//					if (serverSocket != null) {
+//						serverSocket.close();
+//					}
+				} catch (Exception e) {
+					//this is for quit;
+				}
+			}
+		});
+	}
 }
 

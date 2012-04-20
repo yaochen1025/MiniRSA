@@ -38,6 +38,9 @@ public class MessageSender extends Thread {
 		try {
 			while((line = userInput.readLine()) != null) {
 				System.out.println("-------------\nYou can say something:\n");
+				if("\\bye".equals(line)) {
+					System.exit(0);
+				}
 				write(line);
 			}
 			System.out.println("-------------\n");

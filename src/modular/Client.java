@@ -7,6 +7,7 @@ import rsa.*;
 public class Client extends ChatProgram {
 
 	public static void main(String[] args) {
+		
 		port = 8222;
 		ipAddress = "localhost";
 
@@ -23,7 +24,7 @@ public class Client extends ChatProgram {
 	}
 
 	public void run() {
-
+		
 		myRSASet = new RSASet();
 		try {
 			socket = new Socket(ipAddress, port);
