@@ -16,9 +16,9 @@ public class MessageReceiver extends Thread {
 	Encryptor decryptor;
 	
 	
-	public MessageReceiver(Socket socket){
+	public MessageReceiver(Socket socket, Encryptor decryptor){
 		this.socket = socket;
-		this.decryptor = new Encryptor(new BigInteger("1531"),new BigInteger("2623"));
+		this.decryptor = decryptor;
 	}
 
 	/**

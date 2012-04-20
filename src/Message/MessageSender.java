@@ -5,7 +5,6 @@ import java.math.BigInteger;
 import java.net.Socket;
 
 import rsa.Encryptor;
-import rsa.RSASet;
 
 
 public class MessageSender extends Thread {
@@ -14,9 +13,9 @@ public class MessageSender extends Thread {
 	Encryptor encryptor;
 	Socket socket;
 
-	public MessageSender(Socket socket){
+	public MessageSender(Socket socket, Encryptor encryptor){
 		this.socket = socket;
-		this.encryptor = new Encryptor(new BigInteger("451"),new BigInteger("2623"));
+		this.encryptor = encryptor;
 	}
 
 	/**
@@ -46,11 +45,12 @@ public class MessageSender extends Thread {
 	}
 	
 	private void write(String s) throws IOException {
+		StringBuilder sb = new StringBuilder("");
 		for (int i = 0; i < s.length(); i++) {
 			BigInteger x = this.encryptor.encrypt(s.charAt(i));
-			out.write((x+"\\c").getBytes());			
+			sb.append(x+"\\c");			
 		}
-		out.write(("\n").getBytes());	
+		out.write((sb.toString() + "\n").getBytes());	
 	}
 	
 	
