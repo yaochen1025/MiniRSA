@@ -27,14 +27,23 @@ public class GUI extends JFrame {
 
 	private ServerSocket serverSocket;
 	private Socket socket;
-
-	private int port = 8282;
+	private static String ipAddress = "localhost";
+	private static int port = 8282;
 
 	Reader msgReceiver;
 	Encryptor encryptor = new Encryptor(new BigInteger("451"),new BigInteger("2623"));
 
 
 	public static void main(String[] args) {
+		if (args.length >= 2) {
+			try {
+				ipAddress = args[0];
+				port = Integer.parseInt(args[1].trim());
+			}catch (NumberFormatException e) {
+				System.out.println("error in port number");
+				System.exit(-1);
+			}
+		}
 		GUI end = new GUI();
 		end.run();
 	}
@@ -91,7 +100,7 @@ public class GUI extends JFrame {
 	private void setUpServer() {
 		try {
 			try {
-				this.socket = new Socket(InetAddress.getLocalHost(), port);
+				this.socket = new Socket(ipAddress, port);
 				this.setTitle("Client");
 				print("Connected to server.\n\n");
 				this.msgReceiver = new Reader(socket.getInputStream(), "server");

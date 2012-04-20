@@ -3,7 +3,6 @@ package modular;
 import java.net.*;
 
 import rsa.*;
-import message.*;
 
 /**
  * 
@@ -45,7 +44,7 @@ public class Server extends ChatProgram {
 		keySend();
 		
 		new MessageSender(socket, encryptor).start();
-		new MessageReceiver(socket, decryptor).start();
+		new MessageRecver(socket, decryptor).start();
 	
 	}
 }

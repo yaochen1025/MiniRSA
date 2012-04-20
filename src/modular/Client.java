@@ -3,12 +3,10 @@ package modular;
 import java.net.*;
 
 import rsa.*;
-import message.*;
 
 public class Client extends ChatProgram {
 
 	public static void main(String[] args) {
-
 		port = 8222;
 		ipAddress = "localhost";
 
@@ -39,7 +37,7 @@ public class Client extends ChatProgram {
 		keyRecv();
 
 		new MessageSender(socket, encryptor).start();
-		new MessageReceiver(socket, decryptor).start();
+		new MessageRecver(socket, decryptor).start();
 
 	}
 }
