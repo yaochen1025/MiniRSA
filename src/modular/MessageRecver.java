@@ -55,6 +55,6 @@ public class MessageRecver extends Thread {
 		if ("\\bye".equals(sb.toString())) {
 			ChatProgram.shutDown();
 		}
-		System.out.println("-------------\nReceived from the other end:\n" + sb.toString() + "\n-------------\n");
+		System.out.println("-------------\nReceived from the other end:\n" + sb.toString() + "\n-------------");
 	}
 }
