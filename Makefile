@@ -6,5 +6,7 @@ build:
 runServerGui:
 	java -jar gui.jar
 
+testLocalGui:
+	java -jar gui.jar
 clean:
 	rm -rf *.jar
