@@ -130,7 +130,7 @@ public class GUI extends JFrame {
 		//if ("".equals(current.trim())) return;
 		write(current);
 		Date date = new Date();
-		GUI.print("me" + "   " + GUI.dateFormat.format(date) + ":\n" + current + "\n");
+		GUI.print("me" + "   " + GUI.dateFormat.format(date) + ":\n" + current + "\n\n");
 	}
 
 	

@@ -16,7 +16,7 @@ public class RSASet {
 	public RSASet(){
 		do {
 			generate();
-		} while(this.d != 1);
+		} while(this.d == 1);
 	}
 
 	public RSASet(long e, long d, long c, long m){
