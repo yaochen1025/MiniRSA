@@ -20,7 +20,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
-import rsa.Encryptor;
+import modular.Encryptor;
+
 
 
 public class GUI extends JFrame {

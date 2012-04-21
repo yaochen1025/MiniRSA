@@ -4,7 +4,8 @@ import java.io.*;
 import java.math.BigInteger;
 import java.util.Date;
 
-import rsa.Encryptor;
+import modular.Encryptor;
+
 
 
 public class Reader extends Thread {

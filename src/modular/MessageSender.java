@@ -4,7 +4,6 @@ import java.io.*;
 import java.math.BigInteger;
 import java.net.Socket;
 
-import rsa.Encryptor;
 
 
 public class MessageSender extends Thread {

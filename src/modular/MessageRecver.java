@@ -6,8 +6,6 @@ import java.io.*;
 import java.math.BigInteger;
 import java.net.*;
 
-import rsa.*;
-
 
 public class MessageRecver extends Thread {
 

@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.math.BigInteger;
 import java.util.Random;
 
+import modular.Encryptor;
+
 import org.junit.Test;
 
 public class RSATest {
