@@ -35,7 +35,7 @@ public class GUI extends JFrame {
 	private ServerSocket serverSocket;
 	private Socket socket;
 	private static String ipAddress = "localhost";
-	private static int port = 8282;
+	private static int port = 8080;
 
 	Reader msgReceiver;
 	Encryptor encryptor = new Encryptor(new BigInteger("451"),new BigInteger("2623"));

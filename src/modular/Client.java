@@ -14,7 +14,7 @@ public class Client extends ChatProgram {
 	public static void main(String[] args) {
 
 		//reserved for invalid inputs
-		port = 8222;
+		port = 8080;
 		ipAddress = "localhost";
 		
 		if (args.length >= 2) {
