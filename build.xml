@@ -30,4 +30,33 @@
             <fileset dir="bin"/>
         </jar>
     </target>
+	
+	 <target name="encrypt">
+	        <jar destfile="encrypt.jar" filesetmanifest="mergewithoutmain">
+	            <manifest>
+	                <attribute name="Main-Class" value="rsa.SimpleEncryptor"/>
+	                <attribute name="Class-Path" value="."/>
+	            </manifest>
+	            <fileset dir="bin"/>
+	        </jar>
+	    </target>
+	
+	 <target name="decrypt">
+	        <jar destfile="decrypt.jar" filesetmanifest="mergewithoutmain">
+	            <manifest>
+	                <attribute name="Main-Class" value="rsa.SimpleDecryptor"/>
+	                <attribute name="Class-Path" value="."/>
+	            </manifest>
+	            <fileset dir="bin"/>
+	        </jar>
+	    </target>
+	 <target name="cracker">
+	        <jar destfile="cracker.jar" filesetmanifest="mergewithoutmain">
+	            <manifest>
+	                <attribute name="Main-Class" value="rsa.Cracker"/>
+	                <attribute name="Class-Path" value="."/>
+	            </manifest>
+	            <fileset dir="bin"/>
+	        </jar>
+	    </target>
 </project>
