@@ -4,7 +4,11 @@ import java.io.*;
 import java.math.BigInteger;
 import java.net.Socket;
 
-
+/**
+ * Message Sender that is run on its own thread
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 
 public class MessageSender extends Thread {
 
@@ -47,6 +51,11 @@ public class MessageSender extends Thread {
 		}
 	}
 
+	/**
+	 * Write the string to the output stream
+	 * @param s
+	 * @throws IOException
+	 */
 	private void write(String s) throws IOException {
 		StringBuilder sb = new StringBuilder("");
 		for (int i = 0; i < s.length(); i++) {

@@ -2,8 +2,13 @@ package rsa;
 
 import java.math.BigInteger;
 import java.util.Random;
-
+/**
+ * This class is all rsa tools
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class RSA {
+
 
 	public static long coprime(long x) {
 		Random rand = new Random();
@@ -21,24 +26,6 @@ public class RSA {
 		}
 		return GCD(b, a % b);
 	}
-
-	//	public static long modInverse(long a, long n) {
-	//		//TODO
-	//		long i = n, v = 0, d = 1;
-	//		while (a > 0) {
-	//			long t = i / a, x = a;
-	//			a = i % x;
-	//			i = x;
-	//			x = d;
-	//			d = v - t * x;
-	//			v = x;
-	//		}
-	//		v %= n;
-	//		if (v < 0) {
-	//			v = (v+n)%n;
-	//		}
-	//		return v;
-	//	}
 
 	public static long[] extendedEuclid(long a, long b) {
 		if (a % b == 0) {

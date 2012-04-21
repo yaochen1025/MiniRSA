@@ -5,15 +5,15 @@ import java.net.*;
 import rsa.*;
 
 /**
- * 
+ * Server run from terminal
  * @author Yao Chen
  * @author Sheng Huang
- *
  */
 public class Server extends ChatProgram {
 
 	public static void main(String[] args) {
 
+		//reserved for invalid inputs
 		port = 8222;
 		if (args.length >= 1) {
 			try {

@@ -6,8 +6,11 @@ import java.util.Date;
 
 import modular.Encryptor;
 
-
-
+/**
+ * Reader for gui
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class Reader extends Thread {
 
 	BufferedReader in;

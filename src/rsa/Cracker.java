@@ -1,7 +1,11 @@
 package rsa;
 
 import java.util.Scanner;
-
+/**
+ * This class is the cracker
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class Cracker {
 
 	Scanner s = new Scanner(System.in);

@@ -6,7 +6,11 @@ import java.io.*;
 import java.math.BigInteger;
 import java.net.*;
 
-
+/**
+ * Message Receiver that is run on its own thread
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class MessageRecver extends Thread {
 
 	BufferedReader in;
@@ -42,6 +46,11 @@ public class MessageRecver extends Thread {
 		}
 	}
 
+	/**
+	 * Write the string to console.
+	 * @param s
+	 * @throws IOException
+	 */
 	private void print(String s) {
 		StringBuilder sb = new StringBuilder("");
 		String[] received = s.split("\\\\c");

@@ -1,18 +1,30 @@
 package rsa;
 
 import java.util.Scanner;
-
+/**
+ * This class simulates the encrypting process
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class SimpleEncryptor {
+	
 	Scanner s = new Scanner(System.in);
 
 	long e; // prime to m
 	long c; // a * b
 
+	/**
+	 * Main function to run simple encryptor
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SimpleEncryptor end = new SimpleEncryptor();
 		end.run();
 	}
 
+	/**
+	 * Run the encryptor
+	 */
 	private void run() {
 		try {
 			getKeys();
@@ -22,6 +34,9 @@ public class SimpleEncryptor {
 		}
 	}
 
+	/**
+	 * Get the keys from user input
+	 */
 	private void getKeys() {
 		System.out.println("Please enter the public key value (e, c): first e, then c");
 		String line = s.nextLine();
@@ -31,6 +46,9 @@ public class SimpleEncryptor {
 
 	}
 
+	/**
+	 * Encrypts character one after another
+	 */
 	private void encrypt() {
 		System.out.println("Please enter a sentence to encrypt");
 		String line = s.nextLine();

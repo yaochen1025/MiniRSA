@@ -4,13 +4,19 @@ import java.net.*;
 
 import rsa.*;
 
+/**
+ * Client run from terminal
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class Client extends ChatProgram {
 
 	public static void main(String[] args) {
 
+		//reserved for invalid inputs
 		port = 8222;
 		ipAddress = "localhost";
-
+		
 		if (args.length >= 2) {
 			try {
 				ipAddress = args[0];

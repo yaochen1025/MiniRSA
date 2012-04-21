@@ -9,6 +9,11 @@ import modular.Encryptor;
 
 import org.junit.Test;
 
+/**
+ * This class unit test for RSA
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class RSATest {
 
 	Random r = new Random();

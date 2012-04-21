@@ -9,6 +9,11 @@ import java.net.*;
 
 import rsa.*;
 
+/**
+ * Chatting program for specification of sending and receiving keys
+ * @author Yao Chen
+ * @author Sheng Huang
+ */
 public class ChatProgram{
 
 	static int port;
