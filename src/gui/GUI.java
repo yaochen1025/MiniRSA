@@ -9,6 +9,9 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,7 +26,9 @@ import rsa.Encryptor;
 public class GUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
+	static DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	
+	
 	private ServerSocket serverSocket;
 	private Socket socket;
 	private static String ipAddress = "localhost";
@@ -125,10 +130,11 @@ public class GUI extends JFrame {
 		this.edit.setText("");
 		//if ("".equals(current.trim())) return;
 		write(current);
-		print("me:\n" + current + "\n\n");
-
+		Date date = new Date();
+		GUI.print("me" + "   " + GUI.dateFormat.format(date) + ":\n" + current + "\n");
 	}
 
+	
 	private void write(String s) {
 		OutputStream out;
 		try {

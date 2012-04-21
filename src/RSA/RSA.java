@@ -9,7 +9,7 @@ public class RSA {
 		Random rand = new Random();
 		long temp;
 		do {
-			temp = rand.nextLong() % x;
+			temp = rand.nextLong();
 		} while (GCD(x,temp) != 1 || temp <= 0);
 		return temp;
 	}

@@ -2,6 +2,7 @@ package gui;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.util.Date;
 
 import rsa.Encryptor;
 
@@ -41,7 +42,9 @@ public class Reader extends Thread {
 			char x = this.decryptor.decrypt(receivedNumber);
 			sb.append(x);
 		}
-		GUI.print(agentName + ":\n" + sb.toString() + "\n");
-		GUI.print("(Original Message: " + s + ")\n\n");
+		Date date = new Date();
+		System.out.println();
+		GUI.print(agentName + "   " + GUI.dateFormat.format(date) + ":\n" + sb.toString() + "\n");
+		GUI.print("(Original Message: " + s + ")\n");
 	}
 }
