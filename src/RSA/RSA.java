@@ -22,22 +22,50 @@ public class RSA {
 		return GCD(b, a % b);
 	}
 
+	//	public static long modInverse(long a, long n) {
+	//		//TODO
+	//		long i = n, v = 0, d = 1;
+	//		while (a > 0) {
+	//			long t = i / a, x = a;
+	//			a = i % x;
+	//			i = x;
+	//			x = d;
+	//			d = v - t * x;
+	//			v = x;
+	//		}
+	//		v %= n;
+	//		if (v < 0) {
+	//			v = (v+n)%n;
+	//		}
+	//		return v;
+	//	}
+
+	public static long[] extendedEuclid(long a, long b) {
+		if (a % b == 0) {
+			long[] temp = new long[3];
+			temp[0] = b;
+			temp[1] = 0;
+			temp[2] = 1;
+			return temp;
+		}
+		long[] x = extendedEuclid(b, a % b);
+		long[] temp = new long[3];
+		temp[0] = x[0];
+		temp[1] = x[2];
+		temp[2] = x[1] - x[2] * (a / b);
+		return temp;
+
+	}
+
 	public static long modInverse(long a, long n) {
-		//TODO
-		long i = n, v = 0, d = 1;
-		while (a > 0) {
-			long t = i / a, x = a;
-			a = i % x;
-			i = x;
-			x = d;
-			d = v - t * x;
-			v = x;
+		long[] x = extendedEuclid(a, n);
+		if (x[0] != 1) {
+			return 0;
 		}
-		v %= n;
-		if (v < 0) {
-			v = (v+n)%n;
-		}
-		return v;
+		long tempReturn = x[1] % n;
+		if (tempReturn >= 0) return tempReturn;
+		return n + tempReturn;
+
 	}
 
 	public static BigInteger modInverse(BigInteger base, BigInteger n) {

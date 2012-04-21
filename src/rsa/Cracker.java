@@ -1,7 +1,6 @@
 package rsa;
 
 import java.util.Scanner;
-import rsa.*;
 
 public class Cracker {
 
