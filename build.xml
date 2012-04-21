@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="gui" name="Create Runnable Jar for Project MiniRSA">
     <target name="gui">
-        <jar destfile="/Users/glcylily/Documents/workspace/MiniRSA/gui.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="gui.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="gui.GUI"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="/Users/glcylily/Documents/workspace/MiniRSA/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="/Users/glcylily/Downloads/software/eclipse 2/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/junit.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="/Users/glcylily/Downloads/software/eclipse 2/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+            <fileset dir="bin"/>
         </jar>
     </target>
 </project>

@@ -120,8 +120,7 @@ public class GUI extends JFrame {
 			this.sendButton.setEnabled(true);
 
 		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(-1);
+			shutDown();
 		}
 	}
 
@@ -145,8 +144,24 @@ public class GUI extends JFrame {
 			}
 			out.write(("\n").getBytes());	
 		} catch (IOException e) {
-			e.printStackTrace();
+			shutDown();
 		}
 
+	}
+	
+	void shutDown() {
+		try {
+			if(serverSocket != null) {
+				serverSocket.close();
+			}
+			if(serverSocket != null) {
+				serverSocket.close();
+			}
+		} catch (IOException e) {
+			//
+		} finally {
+			System.out.println("Done");
+		}
+		System.exit(0);
 	}
 }

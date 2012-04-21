@@ -45,6 +45,6 @@ public class Reader extends Thread {
 		Date date = new Date();
 		System.out.println();
 		GUI.print(agentName + "   " + GUI.dateFormat.format(date) + ":\n" + sb.toString() + "\n");
-		GUI.print("(Original Message: " + s + ")\n");
+		GUI.print("(Original Message: " + s + ")\n\n");
 	}
 }
