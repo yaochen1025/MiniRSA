@@ -1,7 +1,7 @@
 package rsa;
-
+ 
 import java.util.Scanner;
-
+ 
 public class RSASet {
 
 	public long e; // prime to m

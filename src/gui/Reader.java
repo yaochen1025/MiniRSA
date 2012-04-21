@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.util.Date;
 
 import modular.Encryptor;
-
+ 
 /**
  * Reader for gui
  * @author Yao Chen
