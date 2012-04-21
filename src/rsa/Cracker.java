@@ -1,4 +1,4 @@
-package cracker;
+package rsa;
 
 import java.util.Scanner;
 import rsa.*;

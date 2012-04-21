@@ -26,15 +26,17 @@ public class RSA {
 		//TODO
 		long i = n, v = 0, d = 1;
 		while (a > 0) {
-			long t = i/a, x = a;
+			long t = i / a, x = a;
 			a = i % x;
 			i = x;
 			x = d;
-			d = v - t*x;
+			d = v - t * x;
 			v = x;
 		}
 		v %= n;
-		if (v<0) v = (v+n)%n;
+		if (v < 0) {
+			v = (v+n)%n;
+		}
 		return v;
 	}
 
@@ -72,13 +74,13 @@ public class RSA {
 			if (isPrime(i)) {
 				count++;
 			}
-			
+
 		}
 		return i;
 	}
 
 	private static boolean isPrime(long n) {
-		
+
 		if (n <= 1) return false;
 		if (n == 2) return true;
 		if (n % 2 == 0) return false;
