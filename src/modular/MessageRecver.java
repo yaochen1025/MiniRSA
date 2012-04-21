@@ -14,8 +14,8 @@ public class MessageRecver extends Thread {
 	BufferedReader in;
 	Socket socket;
 	Encryptor decryptor;
-	
-	
+
+
 	public MessageRecver(Socket socket, Encryptor decryptor){
 		this.socket = socket;
 		this.decryptor = decryptor;
@@ -29,16 +29,18 @@ public class MessageRecver extends Thread {
 		try {
 			this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			ChatProgram.shutDown();
+			//e1.printStackTrace();
 		}
-		
+
 		String line;
 		try {
 			while ((line = in.readLine()) != null) {
 				print(line);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			ChatProgram.shutDown();
+			//e.printStackTrace();
 		}
 	}
 
@@ -51,7 +53,7 @@ public class MessageRecver extends Thread {
 			sb.append(x);
 		}
 		if ("\\bye".equals(sb.toString())) {
-			System.exit(0);
+			ChatProgram.shutDown();
 		}
 		System.out.println("-------------\nReceived from the other end:\n" + sb.toString() + "\n-------------\n");
 	}

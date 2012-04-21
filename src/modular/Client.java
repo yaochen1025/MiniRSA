@@ -7,7 +7,7 @@ import rsa.*;
 public class Client extends ChatProgram {
 
 	public static void main(String[] args) {
-		
+
 		port = 8222;
 		ipAddress = "localhost";
 
@@ -16,21 +16,21 @@ public class Client extends ChatProgram {
 				ipAddress = args[0];
 				port = Integer.parseInt(args[1].trim());
 			}catch (NumberFormatException e) {
-				System.out.println("error in port number");
-				System.exit(-1);
+				System.out.println("error in port number.");
+				System.exit(0);
 			}
 		}
 		new Client().run();
 	}
 
 	public void run() {
-		
+
 		myRSASet = new RSASet();
 		try {
 			socket = new Socket(ipAddress, port);
 		}catch (Exception e) {
 			System.out.println("The server is not available!");
-			System.exit(0);
+			ChatProgram.shutDown();
 		}
 		System.out.println("connected to server!");
 
@@ -39,6 +39,6 @@ public class Client extends ChatProgram {
 
 		new MessageSender(socket, encryptor).start();
 		new MessageRecver(socket, decryptor).start();
-
 	}
+
 }

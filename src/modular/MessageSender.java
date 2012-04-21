@@ -23,41 +23,43 @@ public class MessageSender extends Thread {
 	 */
 	@Override
 	public void run() {
-		
+
 		try {
 			this.out = socket.getOutputStream();
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			ChatProgram.shutDown();
+			//e1.printStackTrace();
 		}
 
 		BufferedReader userInput = new BufferedReader(
 				new InputStreamReader(System.in));
-		
+
 		String line;
-		
+		System.out.println("-------------\nYou can say something: (type \"\\bye\" to quit)");
 		try {
 			while((line = userInput.readLine()) != null) {
-				System.out.println("-------------\nYou can say something:\n");
-				if("\\bye".equals(line)) {
-					System.exit(0);
-				}
+				
 				write(line);
 			}
-			System.out.println("-------------\n");
+			System.out.println("-------------");
 		} catch (IOException e) {
-			e.printStackTrace();
+			ChatProgram.shutDown();
+			//e.printStackTrace();
 		}
 	}
-	
+
 	private void write(String s) throws IOException {
 		StringBuilder sb = new StringBuilder("");
 		for (int i = 0; i < s.length(); i++) {
 			BigInteger x = this.encryptor.encrypt(s.charAt(i));
 			sb.append(x+"\\c");			
 		}
-		out.write((sb.toString() + "\n").getBytes());	
+		out.write((sb.toString() + "\n").getBytes());
+		if("\\bye".equals(s)) {
+			ChatProgram.shutDown();
+		}
 	}
-	
-	
+
+
 
 }

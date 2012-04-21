@@ -9,15 +9,19 @@ import java.net.*;
 
 import rsa.*;
 
-public abstract class ChatProgram {
+public class ChatProgram{
 
 	static int port;
 	static String ipAddress;
-	ServerSocket serverSocket;
-	Socket socket;
+	static ServerSocket serverSocket;
+	static Socket socket;
 	RSASet myRSASet;
 	Encryptor encryptor;
 	Encryptor decryptor;
+	MessageRecver messageRecver;
+	MessageSender messageSender;
+
+	static boolean running = true;
 
 	void keySend() {
 		OutputStream out;
@@ -34,7 +38,7 @@ public abstract class ChatProgram {
 		BufferedReader in;
 		String s;
 		try {
-			in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			s = in.readLine();
 			String[] received = s.split("\\\\k");
 
@@ -50,24 +54,20 @@ public abstract class ChatProgram {
 		}
 	}
 
-	void setUpShutDownHook() {
-		System.out.println("sdh setup");
-		Runtime.getRuntime().addShutdownHook(new Thread(){
-			@Override
-			public void run() {
-				try {
-					System.out.println("Done");
-//					if (socket != null) {
-//						socket.close();
-//					}
-//					if (serverSocket != null) {
-//						serverSocket.close();
-//					}
-				} catch (Exception e) {
-					//this is for quit;
-				}
+	static void shutDown() {
+		try {
+			if(serverSocket != null) {
+				serverSocket.close();
 			}
-		});
+			if(serverSocket != null) {
+				serverSocket.close();
+			}
+		} catch (IOException e) {
+			//
+		} finally {
+			System.out.println("Done");
+		}
+		System.exit(0);
 	}
 }
 
